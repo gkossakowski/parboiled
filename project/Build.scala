@@ -12,7 +12,7 @@ object Build extends Build {
     shellPrompt := { s => Project.extract(s).currentProject.id + " > " }
   }
 
-  val basicSettings = SbtPgp.settings ++ seq(
+  val basicSettings = seq(
     version               := "1.1.6",
     scalaVersion          := "2.10.2",
     homepage              := Some(new URL("http://parboiled.org")),
@@ -48,7 +48,6 @@ object Build extends Build {
     publishMavenStyle := true,
     publishArtifact in Test := false,
     pomIncludeRepository := { _ => false },
-    SbtPgp.useGpg := true,
     publishTo <<= version { v: String =>
       val nexus = "https://oss.sonatype.org/"
       if (v.trim.endsWith("SNAPSHOT")) Some("snapshots" at nexus + "content/repositories/snapshots")
