@@ -33,7 +33,7 @@ object Build extends Build {
     scalacOptions         <<= scalaVersion map {
       case x if x startsWith "2.9" =>
         Seq("-unchecked", "-deprecation", "-encoding", "utf8")
-      case x if x startsWith "2.10" =>
+      case x if (x startsWith "2.10") || (x startsWith "2.11") =>
         Seq("-feature", "-language:implicitConversions", "-unchecked", "-deprecation", "-encoding", "utf8")
     },
 
